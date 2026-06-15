@@ -9,11 +9,9 @@
     :root {
       --black: #030303;
       --white: #f4f1ea;
-      --orange: #f04a12;
-      --orange-dark: #9d2508;
+      --orange: #ff4a12;
       --cream: #ede4d6;
-      --muted: rgba(255,255,255,.72);
-      --line: rgba(240,74,18,.75);
+      --muted: rgba(255,255,255,.76);
     }
 
     * {
@@ -27,7 +25,7 @@
     }
 
     body {
-      background: var(--black);
+      background: #000;
       color: var(--white);
       font-family: Arial, Helvetica, sans-serif;
       overflow-x: hidden;
@@ -43,306 +41,226 @@
       background: #000;
     }
 
+    .section-bg {
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+
     .top-bar {
-      height: 58px;
-      background:
-        linear-gradient(90deg, #d73506 0%, #ff4b12 45%, #c52707 100%),
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,.18), transparent 45%);
-      color: #090909;
+      height: 52px;
+      background: linear-gradient(90deg, #e53b08 0%, #ff4a12 50%, #d63107 100%);
+      color: #060606;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
+      font-weight: 950;
       text-transform: uppercase;
-      letter-spacing: .08em;
+      letter-spacing: .09em;
       font-size: 15px;
     }
 
     .nav {
-      height: 178px;
-      padding: 42px 72px;
-      background: #030303;
-      border-bottom: 1px solid rgba(255,255,255,.14);
+      min-height: 168px;
+      padding: 38px 72px;
+      background-image: url("Assets/Header Hintergund.png");
+      background-size: cover;
+      background-position: center;
       display: grid;
-      grid-template-columns: 250px 1fr 280px;
+      grid-template-columns: 270px 1fr 320px;
       align-items: center;
-      gap: 40px;
+      gap: 44px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
     }
 
     .logo {
-      line-height: .82;
-      letter-spacing: -.07em;
+      display: inline-block;
+      color: #fff;
+      font-size: 76px;
+      line-height: .78;
       font-weight: 1000;
-      font-stretch: condensed;
-      font-size: 74px;
-      color: white;
+      letter-spacing: -.075em;
+      text-transform: uppercase;
     }
 
     .logo span {
       display: block;
-      margin-top: 12px;
+      margin-top: 13px;
       font-size: 18px;
-      letter-spacing: .13em;
+      letter-spacing: .17em;
       line-height: 1;
+      font-weight: 900;
     }
 
     .nav-links {
       display: flex;
       justify-content: center;
-      gap: 76px;
-      font-weight: 900;
-      font-size: 14px;
+      gap: 72px;
       text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 950;
       letter-spacing: .08em;
     }
 
     .outline-btn {
+      min-height: 60px;
       border: 2px solid var(--orange);
       color: var(--orange);
-      min-height: 58px;
-      padding: 0 30px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
+      padding: 0 32px;
       text-transform: uppercase;
-      letter-spacing: .08em;
+      font-weight: 950;
+      letter-spacing: .1em;
       font-size: 13px;
-      background: rgba(0,0,0,.2);
+      background: rgba(0,0,0,.18);
     }
 
     .hero {
-      min-height: 700px;
-      padding: 84px 72px 70px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 82% 34%, rgba(255,74,18,.38), transparent 19%),
-        radial-gradient(circle at 80% 43%, rgba(255,74,18,.24), transparent 20%),
-        radial-gradient(circle at 74% 66%, rgba(255,74,18,.17), transparent 18%),
-        linear-gradient(90deg, #000 0%, #020202 42%, #080808 63%, #000 100%);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      right: -5%;
-      top: 8%;
-      width: 58%;
-      height: 82%;
-      background:
-        radial-gradient(circle at 48% 42%, rgba(255,255,255,.38) 0 1px, transparent 2px),
-        radial-gradient(circle at 52% 56%, rgba(255,255,255,.24) 0 1px, transparent 2px),
-        radial-gradient(circle at 60% 30%, rgba(255,255,255,.16) 0 1px, transparent 2px),
-        linear-gradient(135deg, rgba(255,255,255,.18), transparent 28%),
-        radial-gradient(ellipse at 55% 50%, rgba(255,255,255,.18), transparent 26%),
-        radial-gradient(ellipse at 70% 55%, rgba(255,255,255,.11), transparent 32%);
-      background-size: 12px 12px, 16px 16px, 20px 20px, auto, auto, auto;
-      filter: contrast(1.25);
-      border-radius: 60% 40% 55% 45%;
-      transform: rotate(-13deg);
-      opacity: .9;
-      mix-blend-mode: screen;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      right: 8%;
-      top: 15%;
-      width: 35%;
-      height: 38%;
-      background:
-        radial-gradient(circle, rgba(255,75,18,.4), transparent 55%),
-        repeating-radial-gradient(circle at 50% 50%, rgba(255,80,20,.45) 0 1px, transparent 1px 10px);
-      filter: blur(14px);
-      opacity: .55;
-      transform: rotate(-25deg);
+      min-height: 760px;
+      padding: 90px 72px 70px;
+      background-image:
+        linear-gradient(90deg, rgba(0,0,0,.18), rgba(0,0,0,.05)),
+        url("Assets/Hero_3 Hintergund.png");
+      background-size: cover;
+      background-position: center;
     }
 
     .hero-content {
+      max-width: 810px;
       position: relative;
       z-index: 2;
-      max-width: 760px;
     }
 
     .eyebrow {
       color: var(--orange);
-      font-size: 16px;
-      letter-spacing: .22em;
       text-transform: uppercase;
-      font-weight: 900;
-      margin-bottom: 28px;
+      font-size: 16px;
+      font-weight: 950;
+      letter-spacing: .25em;
+      margin-bottom: 30px;
     }
 
-    .hero h1,
-    .display {
-      font-size: clamp(64px, 9vw, 144px);
-      line-height: .9;
-      letter-spacing: -.055em;
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(70px, 9.4vw, 145px);
+      line-height: .88;
+      letter-spacing: -.06em;
       text-transform: uppercase;
       font-weight: 1000;
-      color: white;
+      max-width: 850px;
     }
 
     .hero-copy {
       margin-top: 32px;
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.84);
       font-size: 23px;
       line-height: 1.45;
-      max-width: 520px;
     }
 
     .hero .outline-btn {
-      margin-top: 40px;
-      width: 250px;
+      margin-top: 42px;
+      width: 260px;
     }
 
     .micro {
-      margin-top: 26px;
-      color: rgba(255,255,255,.42);
-      font-size: 13px;
+      margin-top: 25px;
+      color: rgba(255,255,255,.47);
       text-transform: uppercase;
+      font-weight: 850;
       letter-spacing: .16em;
-      font-weight: 800;
+      font-size: 13px;
     }
 
     .hero-note {
       position: absolute;
-      right: 140px;
-      bottom: 62px;
+      right: 130px;
+      bottom: 72px;
       z-index: 3;
+      text-transform: uppercase;
       font-size: 13px;
       line-height: 1.4;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-weight: 900;
+      font-weight: 950;
+      letter-spacing: .11em;
+      color: #fff;
     }
 
     .hero-note strong {
-      color: var(--orange);
       display: block;
+      color: var(--orange);
     }
 
     .difference {
       min-height: 600px;
-      padding: 95px 72px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 60% 40%, rgba(255,110,35,.2), transparent 45%),
-        linear-gradient(120deg, rgba(90,10,0,.35), transparent 30%),
-        linear-gradient(180deg, #e8440e, #b92b08);
-    }
-
-    .difference::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 10% 20%, rgba(255,255,255,.08), transparent 15%),
-        radial-gradient(circle at 80% 40%, rgba(0,0,0,.16), transparent 20%),
-        repeating-radial-gradient(circle at 35% 35%, rgba(0,0,0,.18) 0 1px, transparent 1px 7px);
-      opacity: .55;
-      mix-blend-mode: multiply;
-    }
-
-    .difference::after {
-      content: "DRYP";
-      position: absolute;
-      left: 17%;
-      top: 3%;
-      font-size: clamp(190px, 27vw, 420px);
-      font-weight: 1000;
-      letter-spacing: -.08em;
-      color: rgba(80,0,0,.24);
-      line-height: .8;
+      padding: 92px 72px;
+      background-image: url("Assets/THE DIFFERENCE Hintergund.png");
+      background-size: cover;
+      background-position: center;
     }
 
     .difference-inner {
-      position: relative;
-      z-index: 2;
       display: grid;
       grid-template-columns: 1fr 1px 1fr;
       gap: 70px;
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
 
     .difference h2 {
-      font-size: clamp(52px, 7vw, 104px);
+      color: #fff;
+      font-size: clamp(58px, 7.4vw, 110px);
       line-height: .9;
-      letter-spacing: -.05em;
+      letter-spacing: -.055em;
       text-transform: uppercase;
-      color: white;
-      max-width: 620px;
       font-weight: 1000;
+      max-width: 680px;
     }
 
     .divider {
       width: 1px;
-      height: 270px;
+      height: 275px;
       background: rgba(255,255,255,.55);
     }
 
     .difference p {
-      font-size: clamp(26px, 3vw, 44px);
+      color: #fff;
+      font-size: clamp(28px, 3.15vw, 45px);
       line-height: 1.34;
-      max-width: 720px;
-      color: white;
+      max-width: 730px;
     }
 
     .learn {
       display: inline-flex;
-      margin-top: 44px;
+      margin-top: 42px;
       color: white;
       text-transform: uppercase;
-      letter-spacing: .25em;
-      font-weight: 900;
-      border-bottom: 2px solid rgba(255,255,255,.75);
+      letter-spacing: .27em;
+      font-weight: 950;
+      font-size: 15px;
       padding-bottom: 8px;
+      border-bottom: 2px solid rgba(255,255,255,.78);
     }
 
     .manifesto {
-      min-height: 540px;
-      padding: 90px 72px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 75% 85%, rgba(255,74,18,.35), transparent 18%),
-        linear-gradient(180deg, #050505, #000);
-    }
-
-    .manifesto::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 28% 35%, rgba(255,255,255,.17), transparent 16%),
-        radial-gradient(ellipse at 64% 18%, rgba(255,255,255,.12), transparent 18%),
-        radial-gradient(ellipse at 78% 54%, rgba(255,255,255,.11), transparent 18%),
-        repeating-radial-gradient(circle, rgba(255,255,255,.11) 0 1px, transparent 1px 7px);
-      opacity: .45;
-      filter: contrast(1.2);
-    }
-
-    .manifesto::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 42px;
-      height: 2px;
-      background: linear-gradient(90deg, rgba(255,74,18,.15), rgba(255,74,18,.9), rgba(255,74,18,.18));
-      box-shadow: 0 0 22px rgba(255,74,18,.9);
+      min-height: 555px;
+      padding: 88px 72px;
+      background-image:
+        linear-gradient(90deg, rgba(0,0,0,.16), rgba(0,0,0,.05)),
+        url("Assets/MANIFESTO Hintergund.png");
+      background-size: cover;
+      background-position: center;
     }
 
     .manifesto-inner {
-      position: relative;
-      z-index: 2;
       display: grid;
       grid-template-columns: .9fr 1.1fr;
       gap: 70px;
       align-items: center;
+      min-height: 390px;
     }
 
     .manifesto-copy {
@@ -353,58 +271,38 @@
     }
 
     .short-line {
-      width: 82px;
+      width: 86px;
       height: 3px;
       background: var(--orange);
       margin: 50px 0;
     }
 
     .manifesto h2 {
-      font-size: clamp(62px, 9vw, 142px);
-      line-height: .86;
-      letter-spacing: -.055em;
-      text-transform: uppercase;
-      font-weight: 1000;
-      color: #e6e0d8;
-      text-shadow: 0 4px 24px rgba(255,255,255,.1);
+      display: none;
     }
 
     .pillars {
-      background:
-        linear-gradient(120deg, rgba(0,0,0,.08), transparent 24%),
-        var(--cream);
-      color: #090909;
-      padding: 92px 72px;
-      position: relative;
-    }
-
-    .pillars::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 15% 10%, rgba(255,255,255,.75), transparent 20%),
-        repeating-radial-gradient(circle at 50% 50%, rgba(0,0,0,.055) 0 1px, transparent 1px 9px);
-      opacity: .55;
-      pointer-events: none;
+      background-image: url("Assets/THE SHIFT_THE OBSESSION_THE POINT Hintergund.png");
+      background-size: cover;
+      background-position: center;
+      color: #070707;
+      padding: 92px 72px 94px;
     }
 
     .pillars-grid {
-      position: relative;
-      z-index: 2;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 74px;
+      gap: 78px;
     }
 
     .pillar {
-      border-right: 1px solid rgba(0,0,0,.22);
-      padding-right: 64px;
+      border-right: 1px solid rgba(0,0,0,.2);
       min-height: 320px;
+      padding-right: 68px;
     }
 
     .pillar:last-child {
-      border-right: 0;
+      border-right: none;
     }
 
     .pillar .eyebrow {
@@ -413,10 +311,11 @@
     }
 
     .pillar h3 {
-      font-size: clamp(34px, 4vw, 54px);
-      line-height: 1.05;
-      letter-spacing: -.04em;
+      color: #050505;
       text-transform: uppercase;
+      font-size: clamp(36px, 3.65vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -.045em;
       font-weight: 1000;
       margin-bottom: 34px;
     }
@@ -425,73 +324,62 @@
       font-size: 20px;
       line-height: 1.55;
       color: rgba(0,0,0,.72);
+      max-width: 440px;
     }
 
     .signup {
-      min-height: 620px;
+      min-height: 610px;
       padding: 78px 72px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 12% 18%, rgba(255,74,18,.28), transparent 17%),
-        radial-gradient(circle at 18% 80%, rgba(255,74,18,.22), transparent 18%),
-        linear-gradient(110deg, #020202, #050505 48%, #000 100%);
-    }
-
-    .signup::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 40%, rgba(255,255,255,.16), transparent 25%),
-        radial-gradient(ellipse at 14% 88%, rgba(255,255,255,.10), transparent 25%),
-        repeating-radial-gradient(circle, rgba(255,255,255,.07) 0 1px, transparent 1px 8px);
-      opacity: .4;
+      background-image:
+        linear-gradient(90deg, rgba(0,0,0,.12), rgba(0,0,0,.08)),
+        url("Assets/BE FIRST Hintergund.png");
+      background-size: cover;
+      background-position: center;
     }
 
     .signup-inner {
-      position: relative;
-      z-index: 2;
       display: grid;
-      grid-template-columns: 1.1fr 1px .8fr;
-      gap: 60px;
+      grid-template-columns: 1.1fr 1px .82fr;
+      gap: 64px;
       align-items: center;
+      min-height: 455px;
     }
 
     .signup h2 {
-      font-size: clamp(82px, 13vw, 190px);
+      color: #e9e3dc;
+      font-size: clamp(86px, 13vw, 190px);
       line-height: .82;
       letter-spacing: -.065em;
       text-transform: uppercase;
       font-weight: 1000;
-      color: #e8e2db;
     }
 
     .signup .divider {
+      height: 425px;
       background: var(--orange);
-      height: 430px;
-      box-shadow: 0 0 30px rgba(255,74,18,.8);
+      box-shadow: 0 0 32px rgba(255,74,18,.85);
     }
 
     .signup-copy {
+      color: rgba(255,255,255,.84);
       font-size: 26px;
       line-height: 1.48;
-      color: rgba(255,255,255,.84);
+      max-width: 620px;
     }
 
     .form {
-      margin-top: 40px;
+      margin-top: 38px;
     }
 
     .form input {
       width: 100%;
       height: 70px;
-      background: rgba(0,0,0,.4);
-      border: 1px solid rgba(255,255,255,.25);
-      color: white;
+      background: rgba(0,0,0,.34);
+      border: 1px solid rgba(255,255,255,.26);
+      color: #fff;
       padding: 0 28px;
-      font-size: 16px;
       text-transform: uppercase;
+      font-size: 15px;
       letter-spacing: .18em;
       outline: none;
     }
@@ -505,15 +393,14 @@
     .footer {
       min-height: 260px;
       padding: 70px 72px;
-      position: relative;
-      background:
-        radial-gradient(ellipse at 20% 100%, rgba(255,255,255,.09), transparent 25%),
-        linear-gradient(180deg, #020202, #000);
-      border-top: 1px solid rgba(255,74,18,.45);
+      background-image: url("Assets/Footer Hintergund.png");
+      background-size: cover;
+      background-position: center;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
       align-items: start;
+      border-top: 1px solid rgba(255,74,18,.35);
     }
 
     .footer h4 {
@@ -534,7 +421,7 @@
       text-transform: uppercase;
       letter-spacing: .24em;
       color: rgba(255,255,255,.85);
-      font-weight: 800;
+      font-weight: 850;
     }
 
     .footer-right {
@@ -542,14 +429,14 @@
       text-transform: uppercase;
       letter-spacing: .18em;
       color: rgba(255,255,255,.78);
-      font-weight: 800;
+      font-weight: 850;
       font-size: 13px;
     }
 
     .footer-links {
       display: flex;
       justify-content: flex-end;
-      gap: 36px;
+      gap: 34px;
       margin-bottom: 90px;
     }
 
@@ -560,15 +447,15 @@
     @media (max-width: 980px) {
       .top-bar {
         height: auto;
-        padding: 14px 20px;
-        text-align: center;
+        padding: 14px 18px;
         font-size: 12px;
+        text-align: center;
       }
 
       .nav {
-        height: auto;
         grid-template-columns: 1fr;
-        padding: 28px 24px;
+        min-height: auto;
+        padding: 30px 24px;
         gap: 28px;
       }
 
@@ -590,26 +477,20 @@
 
       .hero {
         min-height: 760px;
-      }
-
-      .hero::before {
-        width: 90%;
-        right: -38%;
-        top: 20%;
-        opacity: .75;
+        background-position: 66% center;
       }
 
       .hero-note {
         position: relative;
         right: auto;
         bottom: auto;
-        margin-top: 60px;
+        margin-top: 54px;
       }
 
       .difference-inner,
       .manifesto-inner,
-      .signup-inner,
       .pillars-grid,
+      .signup-inner,
       .footer {
         grid-template-columns: 1fr;
       }
@@ -619,15 +500,27 @@
         display: none;
       }
 
+      .manifesto {
+        background-position: 68% center;
+      }
+
+      .manifesto-inner {
+        min-height: 500px;
+      }
+
+      .pillars {
+        background-size: cover;
+      }
+
       .pillar {
-        border-right: 0;
+        border-right: none;
         border-bottom: 1px solid rgba(0,0,0,.18);
         padding-right: 0;
         padding-bottom: 44px;
       }
 
       .pillar:last-child {
-        border-bottom: 0;
+        border-bottom: none;
       }
 
       .footer-right {
@@ -664,7 +557,7 @@
       <a href="#access" class="outline-btn">Join the Founders Drop</a>
     </nav>
 
-    <section class="hero" id="drop">
+    <section class="hero section-bg" id="drop">
       <div class="hero-content">
         <div class="eyebrow">Fragrance-led laundry care</div>
 
@@ -693,7 +586,7 @@
       </div>
     </section>
 
-    <section class="difference">
+    <section class="difference section-bg">
       <div class="difference-inner">
         <div>
           <div class="eyebrow">The Difference</div>
@@ -709,12 +602,13 @@
           <p>
             Every fragrance developed with the logic of fine fragrance, not a basic product line. A considered collection built to attract.
           </p>
+
           <a href="#manifesto" class="learn">Learn More →</a>
         </div>
       </div>
     </section>
 
-    <section class="manifesto" id="manifesto">
+    <section class="manifesto section-bg" id="manifesto">
       <div class="manifesto-inner">
         <div class="manifesto-copy">
           <p>
@@ -739,7 +633,7 @@
       </div>
     </section>
 
-    <section class="pillars">
+    <section class="pillars section-bg">
       <div class="pillars-grid">
         <article class="pillar">
           <div class="eyebrow">The Shift</div>
@@ -779,7 +673,7 @@
       </div>
     </section>
 
-    <section class="signup" id="access">
+    <section class="signup section-bg" id="access">
       <div class="signup-inner">
         <div>
           <div class="eyebrow">Founders Drop • Limited First Access</div>
@@ -805,7 +699,7 @@
       </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer section-bg">
       <div>
         <h4>DRYP DROPS, INC.</h4>
         <div class="footer-line"></div>
