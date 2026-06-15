@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DRYP Laundry Drops</title>
+
+  <style>
+    :root {
+      --black: #030303;
+      --white: #f4f1ea;
+      --orange: #f04a12;
+      --orange-dark: #9d2508;
+      --cream: #ede4d6;
+      --muted: rgba(255,255,255,.72);
+      --line: rgba(240,74,18,.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: 100%;
+      background: #000;
+    }
+
+    .top-bar {
+      height: 58px;
+      background:
+        linear-gradient(90deg, #d73506 0%, #ff4b12 45%, #c52707 100%),
+        radial-gradient(circle at 50% 50%, rgba(255,255,255,.18), transparent 45%);
+      color: #090909;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 15px;
+    }
+
+    .nav {
+      height: 178px;
+      padding: 42px 72px;
+      background: #030303;
+      border-bottom: 1px solid rgba(255,255,255,.14);
+      display: grid;
+      grid-template-columns: 250px 1fr 280px;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .logo {
+      line-height: .82;
+      letter-spacing: -.07em;
+      font-weight: 1000;
+      font-stretch: condensed;
+      font-size: 74px;
+      color: white;
+    }
+
+    .logo span {
+      display: block;
+      margin-top: 12px;
+      font-size: 18px;
+      letter-spacing: .13em;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      justify-content: center;
+      gap: 76px;
+      font-weight: 900;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .outline-btn {
+      border: 2px solid var(--orange);
+      color: var(--orange);
+      min-height: 58px;
+      padding: 0 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: 13px;
+      background: rgba(0,0,0,.2);
+    }
+
+    .hero {
+      min-height: 700px;
+      padding: 84px 72px 70px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 82% 34%, rgba(255,74,18,.38), transparent 19%),
+        radial-gradient(circle at 80% 43%, rgba(255,74,18,.24), transparent 20%),
+        radial-gradient(circle at 74% 66%, rgba(255,74,18,.17), transparent 18%),
+        linear-gradient(90deg, #000 0%, #020202 42%, #080808 63%, #000 100%);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -5%;
+      top: 8%;
+      width: 58%;
+      height: 82%;
+      background:
+        radial-gradient(circle at 48% 42%, rgba(255,255,255,.38) 0 1px, transparent 2px),
+        radial-gradient(circle at 52% 56%, rgba(255,255,255,.24) 0 1px, transparent 2px),
+        radial-gradient(circle at 60% 30%, rgba(255,255,255,.16) 0 1px, transparent 2px),
+        linear-gradient(135deg, rgba(255,255,255,.18), transparent 28%),
+        radial-gradient(ellipse at 55% 50%, rgba(255,255,255,.18), transparent 26%),
+        radial-gradient(ellipse at 70% 55%, rgba(255,255,255,.11), transparent 32%);
+      background-size: 12px 12px, 16px 16px, 20px 20px, auto, auto, auto;
+      filter: contrast(1.25);
+      border-radius: 60% 40% 55% 45%;
+      transform: rotate(-13deg);
+      opacity: .9;
+      mix-blend-mode: screen;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: 8%;
+      top: 15%;
+      width: 35%;
+      height: 38%;
+      background:
+        radial-gradient(circle, rgba(255,75,18,.4), transparent 55%),
+        repeating-radial-gradient(circle at 50% 50%, rgba(255,80,20,.45) 0 1px, transparent 1px 10px);
+      filter: blur(14px);
+      opacity: .55;
+      transform: rotate(-25deg);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      color: var(--orange);
+      font-size: 16px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 28px;
+    }
+
+    .hero h1,
+    .display {
+      font-size: clamp(64px, 9vw, 144px);
+      line-height: .9;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+      font-weight: 1000;
+      color: white;
+    }
+
+    .hero-copy {
+      margin-top: 32px;
+      color: rgba(255,255,255,.82);
+      font-size: 23px;
+      line-height: 1.45;
+      max-width: 520px;
+    }
+
+    .hero .outline-btn {
+      margin-top: 40px;
+      width: 250px;
+    }
+
+    .micro {
+      margin-top: 26px;
+      color: rgba(255,255,255,.42);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-weight: 800;
+    }
+
+    .hero-note {
+      position: absolute;
+      right: 140px;
+      bottom: 62px;
+      z-index: 3;
+      font-size: 13px;
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-weight: 900;
+    }
+
+    .hero-note strong {
+      color: var(--orange);
+      display: block;
+    }
+
+    .difference {
+      min-height: 600px;
+      padding: 95px 72px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 60% 40%, rgba(255,110,35,.2), transparent 45%),
+        linear-gradient(120deg, rgba(90,10,0,.35), transparent 30%),
+        linear-gradient(180deg, #e8440e, #b92b08);
+    }
+
+    .difference::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.08), transparent 15%),
+        radial-gradient(circle at 80% 40%, rgba(0,0,0,.16), transparent 20%),
+        repeating-radial-gradient(circle at 35% 35%, rgba(0,0,0,.18) 0 1px, transparent 1px 7px);
+      opacity: .55;
+      mix-blend-mode: multiply;
+    }
+
+    .difference::after {
+      content: "DRYP";
+      position: absolute;
+      left: 17%;
+      top: 3%;
+      font-size: clamp(190px, 27vw, 420px);
+      font-weight: 1000;
+      letter-spacing: -.08em;
+      color: rgba(80,0,0,.24);
+      line-height: .8;
+    }
+
+    .difference-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .difference h2 {
+      font-size: clamp(52px, 7vw, 104px);
+      line-height: .9;
+      letter-spacing: -.05em;
+      text-transform: uppercase;
+      color: white;
+      max-width: 620px;
+      font-weight: 1000;
+    }
+
+    .divider {
+      width: 1px;
+      height: 270px;
+      background: rgba(255,255,255,.55);
+    }
+
+    .difference p {
+      font-size: clamp(26px, 3vw, 44px);
+      line-height: 1.34;
+      max-width: 720px;
+      color: white;
+    }
+
+    .learn {
+      display: inline-flex;
+      margin-top: 44px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: .25em;
+      font-weight: 900;
+      border-bottom: 2px solid rgba(255,255,255,.75);
+      padding-bottom: 8px;
+    }
+
+    .manifesto {
+      min-height: 540px;
+      padding: 90px 72px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 75% 85%, rgba(255,74,18,.35), transparent 18%),
+        linear-gradient(180deg, #050505, #000);
+    }
+
+    .manifesto::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 28% 35%, rgba(255,255,255,.17), transparent 16%),
+        radial-gradient(ellipse at 64% 18%, rgba(255,255,255,.12), transparent 18%),
+        radial-gradient(ellipse at 78% 54%, rgba(255,255,255,.11), transparent 18%),
+        repeating-radial-gradient(circle, rgba(255,255,255,.11) 0 1px, transparent 1px 7px);
+      opacity: .45;
+      filter: contrast(1.2);
+    }
+
+    .manifesto::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 42px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,74,18,.15), rgba(255,74,18,.9), rgba(255,74,18,.18));
+      box-shadow: 0 0 22px rgba(255,74,18,.9);
+    }
+
+    .manifesto-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .manifesto-copy {
+      font-size: 24px;
+      line-height: 1.5;
+      color: rgba(255,255,255,.82);
+      max-width: 560px;
+    }
+
+    .short-line {
+      width: 82px;
+      height: 3px;
+      background: var(--orange);
+      margin: 50px 0;
+    }
+
+    .manifesto h2 {
+      font-size: clamp(62px, 9vw, 142px);
+      line-height: .86;
+      letter-spacing: -.055em;
+      text-transform: uppercase;
+      font-weight: 1000;
+      color: #e6e0d8;
+      text-shadow: 0 4px 24px rgba(255,255,255,.1);
+    }
+
+    .pillars {
+      background:
+        linear-gradient(120deg, rgba(0,0,0,.08), transparent 24%),
+        var(--cream);
+      color: #090909;
+      padding: 92px 72px;
+      position: relative;
+    }
+
+    .pillars::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(255,255,255,.75), transparent 20%),
+        repeating-radial-gradient(circle at 50% 50%, rgba(0,0,0,.055) 0 1px, transparent 1px 9px);
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    .pillars-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 74px;
+    }
+
+    .pillar {
+      border-right: 1px solid rgba(0,0,0,.22);
+      padding-right: 64px;
+      min-height: 320px;
+    }
+
+    .pillar:last-child {
+      border-right: 0;
+    }
+
+    .pillar .eyebrow {
+      font-size: 14px;
+      margin-bottom: 34px;
+    }
+
+    .pillar h3 {
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.05;
+      letter-spacing: -.04em;
+      text-transform: uppercase;
+      font-weight: 1000;
+      margin-bottom: 34px;
+    }
+
+    .pillar p {
+      font-size: 20px;
+      line-height: 1.55;
+      color: rgba(0,0,0,.72);
+    }
+
+    .signup {
+      min-height: 620px;
+      padding: 78px 72px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,74,18,.28), transparent 17%),
+        radial-gradient(circle at 18% 80%, rgba(255,74,18,.22), transparent 18%),
+        linear-gradient(110deg, #020202, #050505 48%, #000 100%);
+    }
+
+    .signup::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 40%, rgba(255,255,255,.16), transparent 25%),
+        radial-gradient(ellipse at 14% 88%, rgba(255,255,255,.10), transparent 25%),
+        repeating-radial-gradient(circle, rgba(255,255,255,.07) 0 1px, transparent 1px 8px);
+      opacity: .4;
+    }
+
+    .signup-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.1fr 1px .8fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .signup h2 {
+      font-size: clamp(82px, 13vw, 190px);
+      line-height: .82;
+      letter-spacing: -.065em;
+      text-transform: uppercase;
+      font-weight: 1000;
+      color: #e8e2db;
+    }
+
+    .signup .divider {
+      background: var(--orange);
+      height: 430px;
+      box-shadow: 0 0 30px rgba(255,74,18,.8);
+    }
+
+    .signup-copy {
+      font-size: 26px;
+      line-height: 1.48;
+      color: rgba(255,255,255,.84);
+    }
+
+    .form {
+      margin-top: 40px;
+    }
+
+    .form input {
+      width: 100%;
+      height: 70px;
+      background: rgba(0,0,0,.4);
+      border: 1px solid rgba(255,255,255,.25);
+      color: white;
+      padding: 0 28px;
+      font-size: 16px;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      outline: none;
+    }
+
+    .form .outline-btn {
+      margin-top: 26px;
+      width: 100%;
+      height: 74px;
+    }
+
+    .footer {
+      min-height: 260px;
+      padding: 70px 72px;
+      position: relative;
+      background:
+        radial-gradient(ellipse at 20% 100%, rgba(255,255,255,.09), transparent 25%),
+        linear-gradient(180deg, #020202, #000);
+      border-top: 1px solid rgba(255,74,18,.45);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .footer h4 {
+      font-size: 31px;
+      letter-spacing: .32em;
+      font-weight: 400;
+      margin-bottom: 34px;
+    }
+
+    .footer-line {
+      width: 54px;
+      height: 3px;
+      background: var(--orange);
+      margin-bottom: 34px;
+    }
+
+    .footer-email {
+      text-transform: uppercase;
+      letter-spacing: .24em;
+      color: rgba(255,255,255,.85);
+      font-weight: 800;
+    }
+
+    .footer-right {
+      text-align: right;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      color: rgba(255,255,255,.78);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 36px;
+      margin-bottom: 90px;
+    }
+
+    .footer-links span:nth-child(2) {
+      color: var(--orange);
+    }
+
+    @media (max-width: 980px) {
+      .top-bar {
+        height: auto;
+        padding: 14px 20px;
+        text-align: center;
+        font-size: 12px;
+      }
+
+      .nav {
+        height: auto;
+        grid-template-columns: 1fr;
+        padding: 28px 24px;
+        gap: 28px;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 24px;
+      }
+
+      .hero,
+      .difference,
+      .manifesto,
+      .pillars,
+      .signup,
+      .footer {
+        padding-left: 24px;
+        padding-right: 24px;
+      }
+
+      .hero {
+        min-height: 760px;
+      }
+
+      .hero::before {
+        width: 90%;
+        right: -38%;
+        top: 20%;
+        opacity: .75;
+      }
+
+      .hero-note {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin-top: 60px;
+      }
+
+      .difference-inner,
+      .manifesto-inner,
+      .signup-inner,
+      .pillars-grid,
+      .footer {
+        grid-template-columns: 1fr;
+      }
+
+      .divider,
+      .signup .divider {
+        display: none;
+      }
+
+      .pillar {
+        border-right: 0;
+        border-bottom: 1px solid rgba(0,0,0,.18);
+        padding-right: 0;
+        padding-bottom: 44px;
+      }
+
+      .pillar:last-child {
+        border-bottom: 0;
+      }
+
+      .footer-right {
+        text-align: left;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+        margin-bottom: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <div class="top-bar">
+      Founders Drop 2027. First access is limited.
+    </div>
+
+    <nav class="nav">
+      <a href="#" class="logo">
+        DRYP
+        <span>Laundry Drops</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#drop">The Drop</a>
+        <a href="#manifesto">Manifesto</a>
+        <a href="#access">First Access</a>
+      </div>
+
+      <a href="#access" class="outline-btn">Join the Founders Drop</a>
+    </nav>
+
+    <section class="hero" id="drop">
+      <div class="hero-content">
+        <div class="eyebrow">Fragrance-led laundry care</div>
+
+        <h1>
+          Dirty never<br />
+          smelled this good.
+        </h1>
+
+        <div class="hero-copy">
+          Fine fragrance for your clothes.<br />
+          Serious cleaning underneath.<br />
+          Laundry made less ordinary.
+        </div>
+
+        <a href="#access" class="outline-btn">Get First Access</a>
+
+        <div class="micro">
+          Private access. No noise. No weak scents.
+        </div>
+      </div>
+
+      <div class="hero-note">
+        <strong>Founders Drop</strong>
+        Limited First Access<br />
+        2027
+      </div>
+    </section>
+
+    <section class="difference">
+      <div class="difference-inner">
+        <div>
+          <div class="eyebrow">The Difference</div>
+          <h2>
+            We don't sell<br />
+            detergent.
+          </h2>
+        </div>
+
+        <div class="divider"></div>
+
+        <div>
+          <p>
+            Every fragrance developed with the logic of fine fragrance, not a basic product line. A considered collection built to attract.
+          </p>
+          <a href="#manifesto" class="learn">Learn More →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto" id="manifesto">
+      <div class="manifesto-inner">
+        <div class="manifesto-copy">
+          <p>
+            Laundry became a chore.<br />
+            Same bottle. Same scent. Same shelf.<br />
+            We accepted it.
+          </p>
+
+          <div class="short-line"></div>
+
+          <p>
+            Your clothes say something before you do.<br />
+            DRYP makes sure they smell like they mean it.
+          </p>
+        </div>
+
+        <h2>
+          We<br />
+          shouldn't<br />
+          have.
+        </h2>
+      </div>
+    </section>
+
+    <section class="pillars">
+      <div class="pillars-grid">
+        <article class="pillar">
+          <div class="eyebrow">The Shift</div>
+          <h3>
+            Make laundry<br />
+            worth looking<br />
+            forward to.
+          </h3>
+          <p>
+            Premium scent. Bold design. Better ingredients. Turning a daily obligation into a ritual that feels like something.
+          </p>
+        </article>
+
+        <article class="pillar">
+          <div class="eyebrow">The Obsession</div>
+          <h3>
+            Build scent<br />
+            like desire, not<br />
+            detergent.
+          </h3>
+          <p>
+            Every fragrance developed with the logic of fine fragrance. Not a basic product line. A considered collection.
+          </p>
+        </article>
+
+        <article class="pillar">
+          <div class="eyebrow">The Point</div>
+          <h3>
+            Turn a daily chore<br />
+            into a ritual people<br />
+            actually feel.
+          </h3>
+          <p>
+            Clean clothes that smell extraordinary should not be taken for granted. DRYP makes that feeling available every time the wardrobe opens.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="signup" id="access">
+      <div class="signup-inner">
+        <div>
+          <div class="eyebrow">Founders Drop • Limited First Access</div>
+          <h2>Be First.</h2>
+        </div>
+
+        <div class="divider"></div>
+
+        <div>
+          <div class="signup-copy">
+            Get first access to the Founders Drop, private launch updates and the first DRYP scent reveal.
+          </div>
+
+          <form class="form">
+            <input type="email" placeholder="Your Email" />
+            <button class="outline-btn" type="submit">Get First Access</button>
+          </form>
+
+          <div class="micro">
+            Private access. No noise. No weak scents.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>
+        <h4>DRYP DROPS, INC.</h4>
+        <div class="footer-line"></div>
+        <div class="footer-email">hey@drypdrops.com</div>
+      </div>
+
+      <div class="footer-right">
+        <div class="footer-links">
+          <span>Legal Notice</span>
+          <span>|</span>
+          <span>Privacy Policy</span>
+        </div>
+
+        <div>© 2024 DRYP Drops, Inc. All Rights Reserved.</div>
+      </div>
+    </footer>
+
+  </main>
+</body>
+</html>
